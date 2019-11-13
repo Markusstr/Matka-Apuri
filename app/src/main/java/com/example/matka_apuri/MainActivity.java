@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private RecyclerView mRecyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
     private RecyclerViewAdapter mAdapter;
-    private ArrayList<RecyclerViewDataClass> dataList = new ArrayList<RecyclerViewDataClass>();
-    private ArrayList<RecyclerViewDataClass> dataList2 = new ArrayList<RecyclerViewDataClass>();
+    private ArrayList<RecyclerViewDataClass> dataList = new ArrayList<>();
+    private ArrayList<RecyclerViewDataClass> dataList2 = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
