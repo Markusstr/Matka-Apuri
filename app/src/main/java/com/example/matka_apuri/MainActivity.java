@@ -2,6 +2,8 @@ package com.example.matka_apuri;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -73,26 +75,31 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setCheckedItem(R.id.nav_search);
         RecyclerViewDataClass data;
 
-        data = new RecyclerViewDataClass("savonlinna", false, "Savonlinna", "Kaupunki Suomessa");
+        Bitmap helsinki = BitmapFactory.decodeResource(getResources(), R.drawable.helsinki);
+        Bitmap joensuu = BitmapFactory.decodeResource(getResources(), R.drawable.joensuu);
+        Bitmap lappeenranta = BitmapFactory.decodeResource(getResources(), R.drawable.lappeenranta);
+        Bitmap savonlinna = BitmapFactory.decodeResource(getResources(), R.drawable.savonlinna);
+
+        data = new RecyclerViewDataClass(joensuu, false, "Joensuu", "Kaupunki Suomessa");
         dataList.add(data);
-        data = new RecyclerViewDataClass("savonlinna", false, "Helsinki", "Kaupunki Suomessa");
+        data = new RecyclerViewDataClass(helsinki, false, "Helsinki", "Kaupunki Suomessa");
         dataList.add(data);
-        data = new RecyclerViewDataClass("savonlinna", false, "Joensuu", "Kaupunki Suomessa");
+        data = new RecyclerViewDataClass(savonlinna, false, "Savonlinna", "Kaupunki Suomessa");
         dataList.add(data);
-        data = new RecyclerViewDataClass("savonlinna", false, "Savonlinna", "Kaupunki Suomessa");
+        data = new RecyclerViewDataClass(lappeenranta, false, "Lappeenranta", "Kaupunki Suomessa");
         dataList.add(data);
-        data = new RecyclerViewDataClass("savonlinna", false, "Savonlinna", "Kaupunki Suomessa");
+        data = new RecyclerViewDataClass(joensuu, false, "Joensuu", "Kaupunki Suomessa");
         dataList.add(data);
 
-        data = new RecyclerViewDataClass("savonlinna", true, "Lappeenranta", "Kaupunki Suomessa");
+        data = new RecyclerViewDataClass(lappeenranta, true, "Lappeenranta", "Kaupunki Suomessa");
         dataList2.add(data);
-        data = new RecyclerViewDataClass("savonlinna", true, "Espoo", "Testiä");
+        data = new RecyclerViewDataClass(helsinki, true, "Helsinki", "Testiä");
         dataList2.add(data);
-        data = new RecyclerViewDataClass("savonlinna", true, "Savonlinna", "Kaupunki Suomessa");
+        data = new RecyclerViewDataClass(joensuu, true, "Joensuu", "Kaupunki Suomessa");
         dataList2.add(data);
-        data = new RecyclerViewDataClass("savonlinna", true, "Savonlinna", "Kaupunki Suomessa");
+        data = new RecyclerViewDataClass(savonlinna, true, "Savonlinna", "Kaupunki Suomessa");
         dataList2.add(data);
-        data = new RecyclerViewDataClass("savonlinna", true, "Savonlinna", "Kaupunki Suomessa");
+        data = new RecyclerViewDataClass(helsinki, true, "Helsinki", "Kaupunki Suomessa");
         dataList2.add(data);
 
 

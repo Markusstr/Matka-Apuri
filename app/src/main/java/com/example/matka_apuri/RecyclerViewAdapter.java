@@ -84,7 +84,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             holder.mClose.setVisibility(View.INVISIBLE);
         }
 
-        //holder.mImage
+        holder.mImage.setImageBitmap(currentItem.getImage());
         holder.mName.setText(currentItem.getName());
         holder.mInfo.setText(currentItem.getInfo());
 

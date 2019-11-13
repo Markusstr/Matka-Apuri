@@ -1,20 +1,22 @@
 package com.example.matka_apuri;
 
+import android.graphics.Bitmap;
+
 public class RecyclerViewDataClass {
-    private String imageName;
+    private Bitmap image;
     private boolean close;
     private String name;
     private String info;
 
-    RecyclerViewDataClass(String imageName, boolean close, String name, String info) {
-        this.imageName = imageName;
+    RecyclerViewDataClass(Bitmap image, boolean close, String name, String info) {
+        this.image = image;
         this.close = close;
         this.name = name;
         this.info = info;
     }
 
-    public String getImageName() {
-        return imageName;
+    public Bitmap getImage() {
+        return image;
     }
 
     public boolean isClose() {
