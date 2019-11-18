@@ -26,6 +26,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.Menu;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -36,8 +38,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private RecyclerView mRecyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
     private RecyclerViewAdapter mAdapter;
-    private ArrayList<RecyclerViewDataClass> dataList = new ArrayList<>();
-    private ArrayList<RecyclerViewDataClass> dataList2 = new ArrayList<>();
+    private ArrayList<RecyclerViewDataClass> dataList;
+    private ArrayList<RecyclerViewDataClass> dataList2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,17 +47,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
 
         ImageButton search_calendar = findViewById(R.id.search_calendar);
+        Button search_button = findViewById(R.id.search_button);
+        final EditText search_edittext = findViewById(R.id.search_edittext);
+
+        dataList = new ArrayList<>();
+        dataList2 = new ArrayList<>();
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
 //        NavigationView navigationView = findViewById(R.id.nav_view);
@@ -75,31 +75,40 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setCheckedItem(R.id.nav_search);
         RecyclerViewDataClass data;
 
+        search_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), SearchActivity.class);
+                intent.putExtra("search_name", search_edittext.getText().toString());
+                startActivity(intent);
+            }
+        });
+
         Bitmap helsinki = BitmapFactory.decodeResource(getResources(), R.drawable.helsinki);
         Bitmap joensuu = BitmapFactory.decodeResource(getResources(), R.drawable.joensuu);
         Bitmap lappeenranta = BitmapFactory.decodeResource(getResources(), R.drawable.lappeenranta);
         Bitmap savonlinna = BitmapFactory.decodeResource(getResources(), R.drawable.savonlinna);
 
-        data = new RecyclerViewDataClass(joensuu, false, "Joensuu", "Kaupunki Suomessa");
+        data = new RecyclerViewDataClass(joensuu, false, "Joensuu", "-1°C", "220km");
         dataList.add(data);
-        data = new RecyclerViewDataClass(helsinki, false, "Helsinki", "Kaupunki Suomessa");
+        data = new RecyclerViewDataClass(helsinki, false, "Helsinki", "2°C", "195km");
         dataList.add(data);
-        data = new RecyclerViewDataClass(savonlinna, false, "Savonlinna", "Kaupunki Suomessa");
+        data = new RecyclerViewDataClass(savonlinna, false, "Savonlinna", "0°C", "140km");
         dataList.add(data);
-        data = new RecyclerViewDataClass(lappeenranta, false, "Lappeenranta", "Kaupunki Suomessa");
+        data = new RecyclerViewDataClass(lappeenranta, false, "Lappeenranta", "1°C", "35km");
         dataList.add(data);
-        data = new RecyclerViewDataClass(joensuu, false, "Joensuu", "Kaupunki Suomessa");
+        data = new RecyclerViewDataClass(joensuu, false, "Joensuu", "-1°C", "220km");
         dataList.add(data);
 
-        data = new RecyclerViewDataClass(lappeenranta, true, "Lappeenranta", "Kaupunki Suomessa");
+        data = new RecyclerViewDataClass(lappeenranta, true, "Lappeenranta", "1°C", "35km");
         dataList2.add(data);
-        data = new RecyclerViewDataClass(helsinki, true, "Helsinki", "Testiä");
+        data = new RecyclerViewDataClass(helsinki, true, "Helsinki", "2°C", "220km");
         dataList2.add(data);
-        data = new RecyclerViewDataClass(joensuu, true, "Joensuu", "Kaupunki Suomessa");
+        data = new RecyclerViewDataClass(joensuu, true, "Joensuu", "-1°C", "220km");
         dataList2.add(data);
-        data = new RecyclerViewDataClass(savonlinna, true, "Savonlinna", "Kaupunki Suomessa");
+        data = new RecyclerViewDataClass(savonlinna, true, "Savonlinna", "0°C", "140km");
         dataList2.add(data);
-        data = new RecyclerViewDataClass(helsinki, true, "Helsinki", "Kaupunki Suomessa");
+        data = new RecyclerViewDataClass(helsinki, true, "Helsinki", "2°C", "195km");
         dataList2.add(data);
 
 
