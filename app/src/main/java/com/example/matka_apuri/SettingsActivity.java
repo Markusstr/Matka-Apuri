@@ -18,6 +18,7 @@ public class SettingsActivity extends AppCompatActivity {
             actionBar.setTitle("Asetukset");
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+
     }
 
     @Override
