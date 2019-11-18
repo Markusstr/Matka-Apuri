@@ -45,13 +45,37 @@
             android:textColor="#000000"
             android:textSize="15sp" />
 
-        <TextView
-            android:id="@+id/card_info"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Kaupunki Suomessa"
-            android:textSize="13sp"
-            android:layout_marginStart="5dp" />
+            android:orientation="horizontal"
+            android:layout_marginStart="5dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sää: " />
+            <TextView
+                android:id="@+id/card_weather"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="15°C"
+                android:textSize="13sp" />
+            <View
+                android:id="@+id/view"
+                android:layout_width="1dp"
+                android:layout_height="18dp"
+                android:layout_marginBottom="50dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:background="@android:color/darker_gray" />
+            <TextView
+                android:id="@+id/card_distance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="365 km"
+                android:gravity="end"
+                android:textSize="13sp" />
 
+        </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

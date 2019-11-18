@@ -27,14 +27,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         ImageView mImage;
         ImageButton mClose;
         TextView mName;
-        TextView mInfo;
+        TextView mWeather;
+        TextView mDistance;
 
         public ViewHolder(@NonNull View itemView, final OnItemClickListener listener) {
             super(itemView);
             mImage = itemView.findViewById(R.id.card_image);
             mClose = itemView.findViewById(R.id.card_closeButton);
             mName = itemView.findViewById(R.id.card_name);
-            mInfo = itemView.findViewById(R.id.card_info);
+            mWeather = itemView.findViewById(R.id.card_weather);
+            mDistance = itemView.findViewById(R.id.card_distance);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -86,7 +88,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         holder.mImage.setImageBitmap(currentItem.getImage());
         holder.mName.setText(currentItem.getName());
-        holder.mInfo.setText(currentItem.getInfo());
+        holder.mWeather.setText(currentItem.getWeather());
+        holder.mDistance.setText(currentItem.getDistance());
 
     }
 
