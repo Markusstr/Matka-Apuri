@@ -73,7 +73,7 @@ public class SearchActivity extends AppCompatActivity {
         mAdapter.setOnItemClickListener(new SearchRecyclerViewAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                Toast.makeText(SearchActivity.this, "Painot: " + position, Toast.LENGTH_SHORT).show();
+                Toast.makeText(SearchActivity.this, "Painoit: " + position, Toast.LENGTH_SHORT).show();
             }
         });
     }

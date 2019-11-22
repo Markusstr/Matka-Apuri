@@ -26,6 +26,7 @@ import android.view.Menu;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private RecyclerView mRecyclerView;
     private RecyclerView.LayoutManager mLayoutManager;
     private RecyclerViewAdapter mAdapter;
+    private RecyclerViewAdapter mAdapter2;
     private ArrayList<RecyclerViewDataClass> dataList;
     private ArrayList<RecyclerViewDataClass> dataList2;
 
@@ -46,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         ImageButton search_calendar = findViewById(R.id.search_calendar);
         Button search_button = findViewById(R.id.search_button);
         final EditText search_edittext = findViewById(R.id.search_edittext);
+        TextView searchHistoryShowAll = findViewById(R.id.searchHistoryShowAll);
 
         dataList = new ArrayList<>();
         dataList2 = new ArrayList<>();
@@ -55,7 +58,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
-//        NavigationView navigationView = findViewById(R.id.nav_view);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
@@ -81,20 +83,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
+        searchHistoryShowAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), SearchHistoryActivity.class);
+                startActivity(intent);
+            }
+        });
+
         Bitmap helsinki = BitmapFactory.decodeResource(getResources(), R.drawable.helsinki);
         Bitmap joensuu = BitmapFactory.decodeResource(getResources(), R.drawable.joensuu);
         Bitmap lappeenranta = BitmapFactory.decodeResource(getResources(), R.drawable.lappeenranta);
         Bitmap savonlinna = BitmapFactory.decodeResource(getResources(), R.drawable.savonlinna);
 
-        data = new RecyclerViewDataClass(joensuu, false, "Joensuu", "-1°C", "220km");
+        data = new RecyclerViewDataClass(joensuu, true, "Joensuu", "-1°C", "220km");
         dataList.add(data);
-        data = new RecyclerViewDataClass(helsinki, false, "Helsinki", "2°C", "195km");
+        data = new RecyclerViewDataClass(helsinki, true, "Helsinki", "2°C", "195km");
         dataList.add(data);
-        data = new RecyclerViewDataClass(savonlinna, false, "Savonlinna", "0°C", "140km");
+        data = new RecyclerViewDataClass(savonlinna, true, "Savonlinna", "0°C", "140km");
         dataList.add(data);
-        data = new RecyclerViewDataClass(lappeenranta, false, "Lappeenranta", "1°C", "35km");
+        data = new RecyclerViewDataClass(lappeenranta, true, "Lappeenranta", "1°C", "35km");
         dataList.add(data);
-        data = new RecyclerViewDataClass(joensuu, false, "Joensuu", "-1°C", "220km");
+        data = new RecyclerViewDataClass(joensuu, true, "Joensuu", "-1°C", "220km");
         dataList.add(data);
 
         data = new RecyclerViewDataClass(lappeenranta, true, "Lappeenranta", "1°C", "35km");
@@ -128,6 +138,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Intent intent = new Intent(this, SettingsActivity.class);
             startActivity(intent);
         }
+        if (id == R.id.nav_earliersearch) {
+            Intent intent = new Intent(this, SearchHistoryActivity.class);
+            startActivity(intent);
+        }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -150,6 +164,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             @Override
             public void onCloseClick(int position) {
+                dataList.remove(position);
+                mAdapter.notifyItemRemoved(position);
             }
         });
     }
@@ -158,12 +174,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mRecyclerView = findViewById(R.id.favoriteRecyclerView);
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        mAdapter = new RecyclerViewAdapter(dataList2);
+        mAdapter2 = new RecyclerViewAdapter(dataList2);
 
         mRecyclerView.setLayoutManager(mLayoutManager);
-        mRecyclerView.setAdapter(mAdapter);
+        mRecyclerView.setAdapter(mAdapter2);
 
-        mAdapter.setOnItemClickListener(new RecyclerViewAdapter.OnItemClickListener() {
+        mAdapter2.setOnItemClickListener(new RecyclerViewAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
                 Toast.makeText(MainActivity.this, "Painoit: " + position, Toast.LENGTH_SHORT).show();
@@ -172,7 +188,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onCloseClick(int position) {
                 dataList2.remove(position);
-                mAdapter.notifyItemRemoved(position);
+                mAdapter2.notifyItemRemoved(position);
             }
         });
     }
