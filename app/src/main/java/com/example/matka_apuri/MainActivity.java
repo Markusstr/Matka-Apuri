@@ -98,9 +98,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         data = new RecyclerViewDataClass(joensuu, true, "Joensuu", "-1°C", "220km");
         dataList.add(data);
-        data = new RecyclerViewDataClass(helsinki, true, "Helsinki", "2°C", "195km");
-        dataList.add(data);
         data = new RecyclerViewDataClass(savonlinna, true, "Savonlinna", "0°C", "140km");
+        dataList.add(data);
+        data = new RecyclerViewDataClass(helsinki, true, "Helsinki", "2°C", "195km");
         dataList.add(data);
         data = new RecyclerViewDataClass(lappeenranta, true, "Lappeenranta", "1°C", "35km");
         dataList.add(data);
@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         data = new RecyclerViewDataClass(lappeenranta, true, "Lappeenranta", "1°C", "35km");
         dataList2.add(data);
-        data = new RecyclerViewDataClass(helsinki, true, "Helsinki", "2°C", "220km");
+        data = new RecyclerViewDataClass(helsinki, true, "Helsinki", "2°C", "195km");
         dataList2.add(data);
         data = new RecyclerViewDataClass(joensuu, true, "Joensuu", "-1°C", "220km");
         dataList2.add(data);
